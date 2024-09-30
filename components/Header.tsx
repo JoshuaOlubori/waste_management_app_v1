@@ -44,6 +44,9 @@ const web3auth = new Web3Auth({
 
 interface HeaderProps {
   onMenuClick: () => void;
+
+  totalEarnings: number;
+
 }
 
 export default function Header({ onMenuClick }: HeaderProps) {
