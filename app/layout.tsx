@@ -11,6 +11,14 @@ import { Toaster } from 'react-hot-toast'
 import { getAvailableRewards, getUserByEmail } from '@/utils/db/actions'
 
 const inter = Inter({ subsets: ['latin'] })
+interface AvailableReward {
+  id: number;
+  name: string;
+  cost: number;
+  description: string | null;
+  collectionInfo: string;
+}
+
 
 export default function RootLayout({
   children,
@@ -29,9 +37,12 @@ export default function RootLayout({
           console.log('user from layout', user);
           
           if (user) {
-            const availableRewards = await getAvailableRewards(user.id) as any
+            const availableRewards: AvailableReward[] = await getAvailableRewards(user.id);
             console.log('availableRewards from layout', availableRewards);
-                        setTotalEarnings(availableRewards)
+                        // setTotalEarnings(availableRewards)
+            // Calculate total earnings based on a property (e.g., cost)
+          const totalEarnings = availableRewards.reduce((acc, reward) => acc + reward.cost, 0); // Assuming cost represents earnings
+          setTotalEarnings(totalEarnings);
           }
         }
       } catch (error) {
