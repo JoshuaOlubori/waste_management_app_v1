@@ -2,13 +2,24 @@
 // @ts-nocheck
 "use client";
 import { useState, useEffect } from "react";
+// import {
+//   Trash2,
+//   MapPin,
+//   CheckCircle,
+//   Clock,
+//   ArrowRight,
+//   Camera,
+//   Upload,
+//   Loader,
+//   Calendar,
+//   Weight,
+//   Search,
+// } from "lucide-react";
 import {
   Trash2,
   MapPin,
   CheckCircle,
   Clock,
-  ArrowRight,
-  Camera,
   Upload,
   Loader,
   Calendar,
@@ -99,7 +110,7 @@ export default function CollectPage() {
     quantityMatch: boolean;
     confidence: number;
   } | null>(null);
-  const [reward, setReward] = useState<number | null>(null);
+  //const [reward, setReward] = useState<number | null>(null);
 
   const handleStatusChange = async (
     taskId: number,
@@ -207,7 +218,7 @@ export default function CollectPage() {
           // Save the collected waste
           await saveCollectedWaste(selectedTask.id, user.id, parsedResult);
 
-          setReward(earnedReward);
+          //setReward(earnedReward);
           toast.success(
             `Verification successful! You earned ${earnedReward} tokens!`,
             {
