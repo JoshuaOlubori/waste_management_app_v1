@@ -51,7 +51,7 @@ export default function Header({ onMenuClick }: HeaderProps) {
   const [loggedIn, setLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true);
   const [userInfo, setUserInfo] = useState(null);
-  const pathname = usePathname()
+  // const pathname = usePathname()
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const isMobile = useMediaQuery("(max-width: 768px)")
   const [balance, setBalance] = useState(0)
@@ -63,6 +63,7 @@ export default function Header({ onMenuClick }: HeaderProps) {
       try {
         await web3auth.initModal();
         setProvider(web3auth.provider);
+        console.log("provider is ",provider)
 
         if (web3auth.connected) {
           setLoggedIn(true);
